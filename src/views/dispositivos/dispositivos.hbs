@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Dispositivos</title>
+  <link rel="stylesheet" href="/styles/dispositivos.css">
+</head>
+<body>
+
+  <h2 class="titulodispositivo">Dispositivos</h2>
+
+  <div class="device-container">
+    {{#each devices}}
+    <div class="device-card">
+      <h3>{{this.nombre_dispositivo}}</h3>
+      <p><strong>Empresa:</strong> {{this.nombre_empresa}}</p>
+      <button onclick="showDetails('{{this.id}}')">Ver más</button>
+      <button onclick="editDevice('{{this.id}}')">Editar</button>
+      <button onclick="deleteDevice('{{this.id}}')">Eliminar</button>
+    </div>
+    {{/each}}
+  </div>
+
+  <div class="add-device">
+    <a href="/dispositivos/nuevo" class="btn">Añadir Nuevo Dispositivo</a>
+  </div>
+
+  <!--<script>
+    function showDetails(id) {
+      alert("Detalles del dispositivo con ID: " + id);
+      // Aquí puedes redirigir a una página con más detalles o mostrar un modal
+    }
+
+    function editDevice(id) {
+      alert("Editar dispositivo con ID: " + id);
+      // Redirige a una ruta para editar el dispositivo
+      window.location.href = `/dispositivos/editar/${id}`;
+    }
+
+    function deleteDevice(id) {
+      if (confirm("¿Estás seguro de eliminar este dispositivo?")) {
+        alert("Eliminando dispositivo con ID: " + id);
+        // Realiza una solicitud para eliminar el dispositivo
+        window.location.href = `/dispositivos/eliminar/${id}`;
+      }
+    }
+  </script>-->
+</body>
+</html>

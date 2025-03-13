@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RSG</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.1/tailwind.min.css">
+        <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" href="/styles/style.css">
+
+        <style>
+            /* Sidebar */
+            .sidebar {
+                width: 4rem; /* Menú colapsado */
+                transition: width 0.3s ease; /* Animación al expandir */
+                position: fixed;
+                top: 4rem; /* Justo debajo del navbar */
+                left: 0;
+                height: calc(100vh - 4rem); /* Altura completa menos la altura del navbar */
+                background-color: #fff;
+                box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+                overflow-x: hidden;
+                z-index: 40;
+            }
+
+            .sidebar:hover {
+                width: 16rem; /* Menú expandido */
+            }
+
+            .sidebar-item {
+                display: flex;
+                align-items: center;
+                padding: 1rem;
+                color: #4A5568;
+                text-decoration: none;
+                white-space: nowrap;
+            }
+
+            .sidebar-item:hover {
+                background-color: #EDF2F7;
+            }
+
+            .sidebar-item i {
+                font-size: 1.25rem;
+                margin-right: 0.5rem;
+            }
+
+            .sidebar-item span {
+                display: none; /* Ocultar texto */
+                opacity: 0; /* Invisibilidad inicial */
+                transition: opacity 0.3s ease; /* Aparición suave */
+            }
+
+            .sidebar:hover .sidebar-item span {
+                display: inline; /* Mostrar texto */
+                opacity: 1; /* Visibilidad total */
+            }
+
+            /* Ajuste del contenido principal */
+            .content {
+                margin-left: 4rem; /* Ajuste para el menú colapsado */
+                padding: 1rem;
+                transition: margin-left 0.3s ease; /* Animación para que el contenido se adapte */
+            }
+
+            .sidebar:hover ~ .content {
+                margin-left: 16rem; /* Ajuste para el menú expandido */
+            }
+
+            /* Restaurar altura del navbar */
+            nav {
+                height: 4rem;
+            }
+        </style>
+    </head>
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-200">
+    <!-- Barra de Navegación -->
+    <nav class="flex items-center py-4 px-8 bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow-lg">
+        <!-- Sección Izquierda: Logo y Nombre -->
+        <div class="flex items-center space-x-3">
+            <img src="assets/logo4.jpg" class="h-10 w-10 rounded-full" alt="RISKSMARTGUARD Logo">
+            <h1 class="text-2xl font-extrabold tracking-wide">RiskSmartGuard</h1>
+        </div>
+
+        <!-- Espaciador para separar secciones -->
+        <div class="flex-grow"></div>
+
+        <!-- Sección Derecha: Usuario y Logout -->
+        <ul class="flex items-center space-x-8">
+            {{#if nombre}}
+            <!-- Nombre del usuario -->
+            <li class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-3 rounded-full shadow-md">
+                    <i class="fas fa-user-shield text-xl text-white"></i>
+                </div>
+                <p class="text-sm font-semibold tracking-wide">{{nombre}}</p>
+            </li>
+
+            <!-- Botón de Logout -->
+            <li>
+                <a href="/logout" class="flex items-center bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-5 rounded-lg shadow-lg transition transform hover:scale-105">
+                    <i class="fas fa-sign-out-alt text-lg mr-2"></i>
+                    Logout
+                </a>
+            </li>
+            {{else}}
+            <!-- Botones para Login y Registro -->
+            <li>
+                <a href="/login" class="flex items-center border-2 border-white hover:bg-white hover:text-blue-700 font-bold py-2 px-5 rounded-lg shadow-md transition transform hover:scale-105">
+                    <i class="fas fa-sign-in-alt text-lg mr-2"></i>
+                    Iniciar Sesión
+                </a>
+            </li>
+            <li>
+                <a href="/register" class="flex items-center border-2 border-white hover:bg-white hover:text-blue-700 font-bold py-2 px-5 rounded-lg shadow-md transition transform hover:scale-105">
+                    <i class="fas fa-user-plus text-lg mr-2"></i>
+                    Registrarme
+                </a>
+            </li>
+            {{/if}}
+        </ul>
+    </nav>
+
+        <!-- Sidebar solo si el usuario está logueado -->
+        {{#if nombre}}
+        <aside class="sidebar">
+            <ul>
+                {{#if cargo}}
+                    {{#isEqual cargo 1}}
+                        <li><a href="/homeAdmin" class="sidebar-item"><i class="fas fa-home"></i> <span>Inicio</span></a></li>
+                        <li><a href="/ataque" class="sidebar-item"><i class="fas fa-book-dead"></i> <span>Ataques</span></a></li>
+                        <li><a href="/empresa" class="sidebar-item"><i class="fas fa-city"></i> <span>Empresas</span></a></li>
+                        <li><a href="/reglasadmin" class="sidebar-item"><i class="fas fa-clipboard-list"></i> <span>Reglas</span></a></li>
+                    {{else}}
+                        <li><a href="/homeClient" class="sidebar-item"><i class="fas fa-home"></i> <span>Inicio</span></a></li>
+                        <li><a href="/trafico" class="sidebar-item"><i class="fas fa-bezier-curve"></i> <span>Tráfico de Red</span></a></li>
+                        <li><a href="/alertas" class="sidebar-item"><i class="fas fa-exclamation-triangle"></i> <span>Alertas</span></a></li>
+                        <li><a href="/dispositivo" class="sidebar-item"><i class="fas fa-laptop"></i> <span>Dispositivos</span></a></li>
+                        <li><a href="/reglasclient" class="sidebar-item"><i class="fas fa-clipboard-list"></i> <span>Reglas</span></a></li>
+                    {{/isEqual}}
+                {{/if}}
+                <li><a href="/logout" class="sidebar-item text-red-500"><i class="fas fa-sign-out-alt"></i> <span>Salir</span></a></li>
+            </ul>
+        </aside>
+        {{/if}}
+
+        <!-- Main Content -->
+        <div class="content">
+            {{{body}}}
+        </div>
+    </body>
+</html>

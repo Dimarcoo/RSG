@@ -1,0 +1,112 @@
+/* Estilo general */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6; /* Gris claro */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo de la barra de navegación */
+nav {
+    background-color: #3b82f6; /* Azul */
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo y título */
+nav h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+nav img {
+    margin-left: 10px;
+}
+
+/* Enlaces del menú superior */
+nav .nav-item {
+    margin: 0 10px;
+}
+
+nav .nav-link {
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav .nav-link:hover {
+    background-color: white;
+    color: #3b82f6;
+}
+
+nav .nav-link:focus {
+    outline: none;
+}
+
+/* Estilo del contenido principal */
+.content {
+    padding: 40px;
+    margin-top: 20px;
+}
+
+/* Botones en la parte superior para login/logout */
+nav .nav-item a {
+    background-color: #f87171; /* Rojo suave */
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+nav .nav-item a:hover {
+    background-color: #e11d48; /* Rojo oscuro */
+}
+
+nav .nav-item a:focus {
+    outline: none;
+}
+
+/* Estilos para los enlaces de inicio de sesión y registro */
+nav .nav-item a {
+    border: 2px solid white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav .nav-item a:hover {
+    background-color: white;
+    color: #3b82f6;
+}
+
+/* Estilos responsivos para móviles */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    nav h1 {
+        font-size: 1.25rem;
+    }
+
+    nav img {
+        margin-left: 0;
+    }
+
+    nav ul {
+        margin-top: 10px;
+    }
+
+    .content {
+        padding: 20px;
+    }
+}

@@ -1,3 +1,1 @@
-# RiskSmartGuard
-# RSG
 # RSG

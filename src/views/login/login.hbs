@@ -1,0 +1,31 @@
+<div class="block mx-auto my-12 p-8 bg-white w-1/3 border border-gray-200 rounded-lg shadow-lg">
+    <h1 class="text-2xl font-bold text-center mb-6">Ingresa a tu cuenta</h1>
+    <form action="" method="post" class="space-y-4">
+        <!-- Campo de usuario con ícono -->
+        <div class="relative">
+            <i class="fas fa-user absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            <input type="text" name="usuario" placeholder="Nombre de usuario" class="border border-gray-300 w-full text-sm placeholder-gray-400 p-3 pl-10 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+
+        <!-- Campo de contraseña con ícono -->
+        <div class="relative">
+            <i class="fas fa-lock absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            <input type="password" name="contraseña" placeholder="Contraseña" class="border border-gray-300 w-full text-sm placeholder-gray-400 p-3 pl-10 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+
+        <!-- Enlace para recuperar contraseña -->
+        <div class="text-right">
+            <a href="#" class="text-sm text-blue-500 hover:underline">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <!-- Botón de inicio de sesión -->
+        <button type="submit" class="rounded-md bg-blue-500 w-full text-white font-medium p-3 hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+            Entrar
+        </button>
+
+        <!-- Mensaje de error (si existe) -->
+        {{#if error}}
+        <p class="text-red-500 font-bold text-sm mt-3">* {{error}}</p>
+        {{/if}}
+    </form>
+</div>

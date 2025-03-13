@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ataques</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h1.tituloformulario {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="text"] {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 8px 10px;
+            width: calc(100% - 20px);
+            margin-bottom: 15px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        .btn.primary {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn.primary:hover {
+            background-color: #218838;
+        }
+
+        .shadow-lg {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .table-actions button {
+            margin: 0 5px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .block {
+                width: 90%;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="mostrarFormularioAtaque()" class="botonataque"> Añadir </button>
+
+    <div class="block mx-auto my-12 p-8 bg-white w-1/3 border border-gray-200 rounded-lg shadow-lg" id="formularioContainer" style="display: none;">
+        <h1 name="tituloformulario" class="font-bold text-center">REGISTRAR ATAQUES CVE</h1>
+        <form id="FormularioAtaque" method="post" class="mt-4">
+            <input type="text" name="nombre_ataque" placeholder="Nombre" required>
+            <input type="text" name="cod_cve" placeholder="Codigo CVE" required>
+            <input type="text" name="descripcion" placeholder="Descripción" required>
+            <input type="text" name="vector_ataque" placeholder="Vector de Ataque" required>
+            <input type="text" name="complejidad_ataque" placeholder="Vector de Complejidad" required>
+            <input type="text" name="privilegios_requeridos" placeholder="Privilegios Requeridos" required>
+            <input type="text" name="interacion_usuario" placeholder="Interacción de Usuario" required>
+            <input type="text" name="alcance" placeholder="Alcance" required>
+            <input type="text" name="impacto_confidencialidad" placeholder="Confidencialidad" required>
+            <input type="text" name="impacto_integridad" placeholder="Integridad" required>
+            <input type="text" name="impacto_disponibilidad" placeholder="Disponibilidad" required>
+            <input type="text" name="puntuacion_base" placeholder="Puntuación Base" required>
+            <input type="text" name="severidad" placeholder="Severidad" required>
+            
+            <button type="submit" class="btn primary">Guardar</button>
+        </form>
+    </div>
+
+    <div class="mx-center sm:px6 lg:px-8">
+        <div class="max-w-screen-md mx-auto px-2 lg:px-4">
+            <table class="tabla">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NOMBRE</th>
+                        <th>CODIGO</th>
+                        <!--<th>DESCRIPCIÓN</th>-->
+                        <th>AV</th>
+                        <th>AC</th>
+                        <th>PR</th>
+                        <th>UI</th>
+                        <th>S</th>
+                        <th>C</th>
+                        <th>I</th>
+                        <th>A</th>
+                        <th>Puntuación</th>
+                        <th>SEVERIDAD</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each attacks}}
+                    <tr>
+                        <td>{{this.id_ataque}}</td>
+                        <td>{{this.nombre_ataque}}</td>
+                        <td>{{this.cod_cve}}</td>
+                        <!--<td>{{this.descripcion}}</td>-->
+                        <td>{{this.vector_ataque}}</td>
+                        <td>{{this.complejidad_ataque}}</td>
+                        <td>{{this.privilegios_requeridos}}</td>
+                        <td>{{this.interacion_usuario}}</td>
+                        <td>{{this.alcance}}</td>
+                        <td>{{this.impacto_confidencialidad}}</td>
+                        <td>{{this.impacto_integridad}}</td>
+                        <td>{{this.impacto_disponibilidad}}</td>
+                        <td>{{this.puntuacion_base}}</td>
+                        <td>{{this.severidad}}</td>
+                        <td class="p-3">
+                            <form action="/ataques/destroy" method="post">
+                                <input type="hidden" value="{{id}}" name="id">    
+                                <button class="bg-red-500 text-white px-3 py-1 rounded-sm">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                                <button class="bg-green-500 text-white px-3 py-1 rounded-sm">
+                                    <i class="fas fa-pen"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function mostrarFormularioAtaque() {
+            var formularioContainer = document.getElementById('formularioContainer');
+            formularioContainer.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

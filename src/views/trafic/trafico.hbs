@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tráfico de Red</title>
+    </head>
+    <body>
+        <div class="mx-center sm:px6 lg:px-8 mt-6">
+            <div class="max-w-screen-md mx-auto px-2 lg:px-4">
+                <table class="tabla">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>ID Tráfico</th>
+                            <th>Ip Origen</th>
+                            <th>Puerto Origen</th>
+                            <th>Ip Destino</th>
+                            <th>Puerto Destino</th>
+                            <th>Protocolo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each eventos}}
+                            <tr>
+                                <td>{{this.timestamp}}</td>
+                                <td>{{this.flow_id}}</td>
+                                <td>{{this.src_ip}}</td>
+                                <td>{{this.src_port}}</td>
+                                <td>{{this.dest_ip}}</td>
+                                <td>{{this.dest_port}}</td>
+                                <td>{{this.proto}}</td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

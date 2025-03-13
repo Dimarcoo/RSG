@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de Predicción</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .prediction {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resultados de Predicción de Tráfico de Red</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>IP Origen</th>
+                <th>Puerto Origen</th>
+                <th>IP Destino</th>
+                <th>Puerto Destino</th>
+                <th>Protocolo</th>
+                <th>Bytes Entrada</th>
+                <th>Bytes Salida</th>
+                <th>Paquetes Entrada</th>
+                <th>Paquetes Salida</th>
+                <th>Duración del Flujo (ms)</th>
+                <th>Predicción</th>
+                <th>puntuacion</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each eventos}}
+            <tr>
+                <td>{{IPV4_SRC_ADDR}}</td>
+                <td>{{L4_SRC_PORT}}</td>
+                <td>{{IPV4_DST_ADDR}}</td>
+                <td>{{L4_DST_PORT}}</td>
+                <td>{{PROTOCOL}}</td>
+                <td>{{IN_BYTES}}</td>
+                <td>{{OUT_BYTES}}</td>
+                <td>{{IN_PKTS}}</td>
+                <td>{{OUT_PKTS}}</td>
+                <td>{{FLOW_DURATION_MILLISECONDS}}</td>
+                <td class="prediction">{{prediction}}</td>
+                <td class="puntuacíon_base">{{puntuacion}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+</html>

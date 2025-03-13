@@ -1,0 +1,134 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('assets/1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #ffdd90;
+}
+.sidebar { 
+    height: 100vh;
+    width: 190px;
+    position: fixed;
+    z-index: 1;
+    top: 40;
+    left: 0;
+    background-color: #5b7dcf;
+    overflow-x: hidden;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu li {
+    padding: 10px;
+}
+
+.menu li a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    display: block;
+    align-items: center;
+    text-align: justify;
+}
+
+.menu li a i {
+    margin-right: 5px;
+}
+
+.menu li a:hover {
+    background-color: #ebd409;
+    font-weight: 700;
+    background-color: #014ba0;
+    border-radius: 12px;
+}
+.content_main {
+    margin-left: 160 px;
+    font-size: 22px;
+    padding: 0 10px;
+} 
+.content_main h1{
+    text-align: center;
+}
+/*FORMULARIO EMPRESA*/
+.botonempresa {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    top: 15px;
+    left: 1400px;
+}
+.botonempresa:hover {
+    background-color: #45a049;
+}
+.botonempresa:active {
+    background-color: #3e8e41;
+}
+
+.formularioempresa {
+    background-color: #014ba0;
+}
+/*FIN EMPRESA*/
+
+/*FORMULARIO ATAQUE*/
+.botonataque {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    top: 15px;
+    left: 1400px;
+}
+.botonataque:hover {
+    background-color: #45a049;
+}
+.botonataque:active {
+    background-color: #3e8e41;
+}
+
+.formularioataque {
+    background-color: #014ba0;
+}
+/*FIN ATAQUE*/
+.btn{
+    border: none; 
+    color: white; 
+    padding: 14px 28px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+}
+.primary {background-color: #007bff;} 
+.primary:hover {background: #0b7dda;}
+
+.secondary {background-color: #f44336;}  
+.secondary:hover hover {background: #da190b;}
+
+
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla th, .tabla td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.tabla th {
+    background-color: #f2f2f2;
+}
+
+.tabla tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
